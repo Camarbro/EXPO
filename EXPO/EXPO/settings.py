@@ -117,14 +117,14 @@ USE_TZ = True
 
 from django.core.urlresolvers import reverse_lazy
 
-LOGIN_URL = reverse_lazy('home')
-LOGIN_REDIRECT_URL = reverse_lazy('home')
-LOGOUT_URL = reverse_lazy('home')
+LOGIN_URL = reverse_lazy('home_view')
+LOGIN_REDIRECT_URL = reverse_lazy('home_view')
+LOGOUT_URL = reverse_lazy('home_view')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATCIFILES_DIRS = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
