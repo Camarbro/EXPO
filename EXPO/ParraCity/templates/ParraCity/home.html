@@ -1,0 +1,36 @@
+{% extends 'base_city.html' %}
+{% block title %} Home {% endblock %}
+{% block context %}Criticas de la Ciudad{%endblock%}
+{% block subcontext %} Mira, envia y califica criticas de Parra City{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <h1 class="post-title">Ultimas Criticas</h1>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview">
+              {% for post in posts %}
+                <a href="{% url 'ParraCity.views.post_detail' pk=post.pk %}">
+                    <h2 class="post-title">
+                        {{ post.titulo }}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{post.categoria_post}}
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by {{post.autor}} on {{post.creacion}} </p>
+                <hr>
+              {% endfor %}
+            </div>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">More Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

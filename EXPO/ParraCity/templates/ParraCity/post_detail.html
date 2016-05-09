@@ -1,0 +1,28 @@
+{% extends 'base_detail.html' %}
+{% block post-title %} {{ post.titulo }} {% endblock %}
+{% block post-category %}{{ post.categoria_post }}{% endblock %}
+{% block autor %}Publicado por {{ post.autor }} on {{ post.creacion }}{% endblock %}
+{% block article %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+
+          <a href="#">
+            {% if post.media %}
+              <img  style="margin: 0 auto;" src="{{ post.media.url }}" class="img-responsive" alt="im here">
+            {% endif %}
+          </a>
+
+          <p>
+            {{post.contenido | linebreaks }}
+          </p>
+          <div class="fb-like" data-href="http://localhost:8000/ParraCity/post/{{post.pk}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        </div>
+
+    </div>
+    {% if user.is_superuser or post.autor.username == request.user.username %}
+      <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+      <a class="btn btn-default" href="{% url 'delete_post' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+    {% endif %}
+</div>
+{% endblock %}
