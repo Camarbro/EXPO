@@ -1,0 +1,38 @@
+1.- sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+
+2.- sudo su - postgres
+
+3.- psql
+
+4.- CREATE DATABASE myproject;
+    CREATE USER myprojectuser WITH PASSWORD 'password';
+    ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+    ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+    ALTER ROLE myprojectuser SET timezone TO 'UTC';
+    GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+
+5.- \q
+
+6.- pip install django psycopg2
+
+7.- Settings.py
+. . .
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+. . .
+
+8.- Migrations
+
+9.- SU
+
+10.- Runserver!!! 

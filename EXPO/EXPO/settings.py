@@ -121,6 +121,9 @@ LOGIN_URL = reverse_lazy('home_view')
 LOGIN_REDIRECT_URL = reverse_lazy('home_view')
 LOGOUT_URL = reverse_lazy('home_view')
 
+MEDIA_URL = 'http://localhost:8000/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
